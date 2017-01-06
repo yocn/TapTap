@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="60dp"
@@ -7,18 +8,14 @@
     android:background="@color/colorMain">
 
     <com.tele.forum.taptap.view.custom.CircleImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="25dp"
-        android:background="@color/colorWhite" />
-
-    <com.tele.forum.taptap.view.custom.CircleImageView
         android:layout_width="38dp"
         android:layout_height="38dp"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="27dp"
-        android:background="@color/colorMain" />
+        android:layout_marginLeft="7dp"
+        android:src="@mipmap/ic_launcher"
+        android:background="@color/colorMain"
+        app:civ_border_color="@color/colorWhite"
+        app:civ_border_width="1dp" />
 
     <TextView
         android:id="@+id/tv_title"

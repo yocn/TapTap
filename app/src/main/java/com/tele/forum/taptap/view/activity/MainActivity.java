@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.tele.forum.taptap.R;
 import com.tele.forum.taptap.presenter.TopAndBottomAnimationPresenter;
+import com.tele.forum.taptap.presenter.util.Loger;
 import com.tele.forum.taptap.view.adapter.HomeFragmentAdapter;
 import com.tele.forum.taptap.view.fragment.FindFragment;
 import com.tele.forum.taptap.view.fragment.ForumFragment;
@@ -19,8 +21,11 @@ public class MainActivity extends BaseTransTitleActivity {
     private ViewPager vp_main;
     private Fragment[] mFragments;
     private RelativeLayout rl_main_top;
-    private RelativeLayout rl_main_bottom;
+    private LinearLayout rl_main_bottom;
     TopAndBottomAnimationPresenter mTopAndBottomAnimationPresenter;
+    private final int STATUE_HIDE = 0;
+    private final int STATUE_SHOW = 1;
+    private int mCurrentTopAndBottomShowStatus = STATUE_SHOW;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +37,7 @@ public class MainActivity extends BaseTransTitleActivity {
 
     private void initView() {
         rl_main_top = (RelativeLayout) findViewById(R.id.rl_main_top);
-        rl_main_bottom = (RelativeLayout) findViewById(R.id.rl_main_bottom);
+        rl_main_bottom = (LinearLayout) findViewById(R.id.rl_main_bottom);
         vp_main = (ViewPager) findViewById(R.id.vp_main);
     }
 
@@ -62,8 +67,11 @@ public class MainActivity extends BaseTransTitleActivity {
      */
     public void showTopAndBottom() {
         if (mTopAndBottomAnimationPresenter == null) return;
-        mTopAndBottomAnimationPresenter.startUpOutTopAnim(rl_main_bottom);
-        mTopAndBottomAnimationPresenter.startDownInTopAnim(rl_main_top);
+        if (mCurrentTopAndBottomShowStatus == STATUE_SHOW) return;
+        Loger.d("---showTopAndBottom");
+        mCurrentTopAndBottomShowStatus = STATUE_SHOW;
+        mTopAndBottomAnimationPresenter.startTopDownAnim(rl_main_top);
+        mTopAndBottomAnimationPresenter.startBottomUpAnim(rl_main_bottom);
     }
 
     /**
@@ -71,8 +79,11 @@ public class MainActivity extends BaseTransTitleActivity {
      */
     public void dismissTopAndBottom() {
         if (mTopAndBottomAnimationPresenter == null) return;
-        mTopAndBottomAnimationPresenter.startUpOutTopAnim(rl_main_top);
-        mTopAndBottomAnimationPresenter.startDownInTopAnim(rl_main_bottom);
+        if (mCurrentTopAndBottomShowStatus == STATUE_HIDE) return;
+        Loger.d("---dismissTopAndBottom");
+        mCurrentTopAndBottomShowStatus = STATUE_HIDE;
+        mTopAndBottomAnimationPresenter.startTopUpAnim(rl_main_top);
+        mTopAndBottomAnimationPresenter.startBottomDownAnim(rl_main_bottom);
     }
 
     /**

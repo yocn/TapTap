@@ -7,6 +7,8 @@ import android.app.Application;
  */
 
 public class TApplication extends Application {
+    public static String tag = "taptap";
+
     @Override
     public void onCreate() {
         super.onCreate();

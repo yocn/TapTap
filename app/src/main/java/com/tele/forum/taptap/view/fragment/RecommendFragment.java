@@ -1,5 +1,6 @@
 package com.tele.forum.taptap.view.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -15,14 +16,17 @@ import com.tele.forum.taptap.view.custom.swiperefreshendless.HeaderViewRecyclerA
 
 /**
  * Created by Yocn on 17.1.7.
+ * 推荐
  */
 
 public class RecommendFragment extends LazyRefreshRecyclerViewFragment {
     View mView;
+    Context mContext;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_recommend, null);
+        mContext = getActivity();
         initViews(mView);
         return mView;
     }
@@ -35,7 +39,7 @@ public class RecommendFragment extends LazyRefreshRecyclerViewFragment {
     public void initViews(View mRootView) {
         initRecyclerView(mRootView);
         setLoadMoreViewText("没有更多的直播...");
-        RecommendAdapter mAdapter = new RecommendAdapter();
+        RecommendAdapter mAdapter = new RecommendAdapter(mContext);
         HeaderViewRecyclerAdapter mRecyclerViewAdapter = new HeaderViewRecyclerAdapter(mAdapter);
         mRecyclerViewAdapter.addFooterView(loadMoreView);
         recyclerView.setAdapter(mRecyclerViewAdapter);

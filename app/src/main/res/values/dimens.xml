@@ -9,4 +9,6 @@
     <dimen name="height_bottom_margin_5dp">5dp</dimen>
     <dimen name="dp_5">5dp</dimen>
     <dimen name="dp_20">20dp</dimen>
+    <dimen name="height_main_top">60dp</dimen>
+    <dimen name="height_main_bottom">260dp</dimen>
 </resources>

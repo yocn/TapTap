@@ -6,4 +6,80 @@
     android:background="@color/colorGreen"
     android:fitsSystemWindows="true">
 
+    <com.tele.forum.taptap.view.custom.scrollview.ObservableScrollView
+        android:id="@+id/sv_all"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/google_red">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent">
+
+            <RelativeLayout
+                android:id="@+id/rl_top"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/google_blue">
+
+                <WebView
+                    android:id="@+id/wv_test"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </WebView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@id/rl_top"
+                android:background="@color/colorPrimary">
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="150dp"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:singleLine="true"
+                    android:text="经验值+888888经验值+888888经验值+888888经验值+888888经验值+888888经验值+888888经验值+888888"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_content2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/tv_content"
+                    android:layout_marginLeft="50dp"
+                    android:text="我的排行~~"
+                    android:textColor="@color/colorWhite" />
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/triangle" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_content2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/album_head_bg" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </com.tele.forum.taptap.view.custom.scrollview.ObservableScrollView>
+
 </RelativeLayout>

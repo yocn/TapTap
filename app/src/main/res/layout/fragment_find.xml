@@ -6,4 +6,18 @@
     android:background="@color/colorBlue"
     android:fitsSystemWindows="true">
 
+    <TextView
+        android:id="@+id/tv_introduce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:singleLine="true"
+        android:layout_marginTop="150dp"
+        android:text="经验值+888888经验值+888888经验值+888888经验值+888888经验值+888888经验值+888888经验值+888888"
+        android:textColor="@color/colorWhite"
+        android:textSize="13sp" />
+
 </RelativeLayout>

@@ -10,7 +10,7 @@ import com.tele.forum.taptap.presenter.util.DisplayUtils;
 public class TopAndBottomAnimationPresenter {
     Activity mContext;
     UpAndDownListener listener;
-    private long time = 500;
+    private long time = 200;
 
     public interface UpAndDownListener {
         void OnAnchorInfoUpOut();

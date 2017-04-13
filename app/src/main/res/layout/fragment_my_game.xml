@@ -6,12 +6,12 @@
     android:background="@color/colorPrimaryDark"
     android:fitsSystemWindows="true">
 
-    <FrameLayout
+    <com.tele.forum.taptap.view.custom.AutoChangeImageView
         android:id="@+id/fl_container"
-        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="200dp"
+        android:layout_marginTop="100dp">
 
-    </FrameLayout>
+    </com.tele.forum.taptap.view.custom.AutoChangeImageView>
 
 </RelativeLayout>

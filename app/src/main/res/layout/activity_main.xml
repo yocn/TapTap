@@ -5,12 +5,43 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_main"
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
 
-    <include layout="@layout/include_main_top" />
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    <include layout="@layout/include_main_bottom" />
+        <LinearLayout
+            android:id="@+id/ll_drawe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/colorMain"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/lv_left_menu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/colorWhite"
+                android:dividerHeight="1px"
+                android:text="DrawerLayout" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/include_main_top" />
+
+            <include layout="@layout/include_main_bottom" />
+
+        </RelativeLayout>
+    </android.support.v4.widget.DrawerLayout>
+
+
 </RelativeLayout>

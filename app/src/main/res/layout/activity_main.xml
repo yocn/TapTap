@@ -15,23 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <LinearLayout
-            android:id="@+id/ll_drawe"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:background="@color/colorMain"
-            android:orientation="vertical">
-
-            <ListView
-                android:id="@+id/lv_left_menu"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:divider="@color/colorWhite"
-                android:dividerHeight="1px"
-                android:text="DrawerLayout" />
-        </LinearLayout>
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -41,7 +24,32 @@
             <include layout="@layout/include_main_bottom" />
 
         </RelativeLayout>
-    </android.support.v4.widget.DrawerLayout>
 
+        <LinearLayout
+            android:id="@+id/ll_drawe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/colorMain"
+            android:clickable="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_top"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/colorAccent">
+
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/lv_left_menu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/colorWhite"
+                android:dividerHeight="1px"
+                android:text="DrawerLayout" />
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
 
 </RelativeLayout>

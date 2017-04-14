@@ -1,5 +1,6 @@
 package com.tele.forum.taptap.view.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,6 +15,7 @@ import android.widget.RelativeLayout;
 
 import com.tele.forum.taptap.R;
 import com.tele.forum.taptap.presenter.TopAndBottomAnimationPresenter;
+import com.tele.forum.taptap.presenter.util.Loger;
 import com.tele.forum.taptap.view.adapter.HomeFragmentAdapter;
 import com.tele.forum.taptap.view.adapter.HomeSettingAdapter;
 import com.tele.forum.taptap.view.fragment.FindFragment;
@@ -21,11 +23,13 @@ import com.tele.forum.taptap.view.fragment.ForumFragment;
 import com.tele.forum.taptap.view.fragment.MyGameFragment;
 import com.tele.forum.taptap.view.fragment.RankFragment;
 import com.tele.forum.taptap.view.fragment.RecommendFragment;
+import com.tele.forum.taptap.view.service.FloatService;
 
 public class MainActivity extends BaseTransTitleActivity implements View.OnClickListener {
     private ViewPager vp_main;
     private Fragment[] mFragments;
     private RelativeLayout rl_main_top;
+    private RelativeLayout rl_top;
     private LinearLayout rl_main_bottom;
     private LinearLayout ll_drawe;
     TopAndBottomAnimationPresenter mTopAndBottomAnimationPresenter;
@@ -58,6 +62,7 @@ public class MainActivity extends BaseTransTitleActivity implements View.OnClick
     private void initView() {
         civ_head = (ImageView) findViewById(R.id.civ_head);
         rl_main_top = (RelativeLayout) findViewById(R.id.rl_main_top);
+        rl_top = (RelativeLayout) findViewById(R.id.rl_top);
         rl_main_bottom = (LinearLayout) findViewById(R.id.rl_main_bottom);
         ll_drawe = (LinearLayout) findViewById(R.id.ll_drawe);
         vp_main = (ViewPager) findViewById(R.id.vp_main);
@@ -76,6 +81,7 @@ public class MainActivity extends BaseTransTitleActivity implements View.OnClick
         ll_2.setOnClickListener(this);
         ll_3.setOnClickListener(this);
         ll_4.setOnClickListener(this);
+        rl_top.setOnClickListener(this);
         civ_head.setOnClickListener(this);
         mRecommendFragment = new RecommendFragment();
         mRankFragment = new RankFragment();
@@ -88,12 +94,6 @@ public class MainActivity extends BaseTransTitleActivity implements View.OnClick
         vp_main.setAdapter(mHomeFragmentAdapter);
         HomeSettingAdapter mHomeSettingAdapter = new HomeSettingAdapter(mSettings, this);
         lv_left_menu.setAdapter(mHomeSettingAdapter);
-        lv_left_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
         mTopAndBottomAnimationPresenter = new TopAndBottomAnimationPresenter(this, mUpAndDowmListener);
     }
 
@@ -155,6 +155,9 @@ public class MainActivity extends BaseTransTitleActivity implements View.OnClick
                 break;
             case R.id.civ_head:
                 drawer_layout.openDrawer(ll_drawe);
+                break;
+            case R.id.rl_top:
+                Loger.d("rl_top");
                 break;
         }
     }

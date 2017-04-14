@@ -1,13 +1,18 @@
 package com.tele.forum.taptap.view.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tele.forum.taptap.R;
+import com.tele.forum.taptap.presenter.util.Loger;
+import com.tele.forum.taptap.view.activity.MainActivity;
+import com.tele.forum.taptap.view.service.FloatService;
 
 import java.util.Random;
 
@@ -19,9 +24,11 @@ import java.util.Random;
 public class HomeSettingAdapter extends BaseAdapter {
     LayoutInflater mInflater;
     private String[] settings = {};
+    Context mContext;
 
     public HomeSettingAdapter(String[] settings, Context context) {
         this.settings = settings;
+        mContext = context;
         mInflater = LayoutInflater.from(context);
     }
 
@@ -45,21 +52,33 @@ public class HomeSettingAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup arg2) {
+    public View getView(final int position, View convertView, ViewGroup arg2) {
         ViewHolder holder;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.item_setting, null);
             holder = new ViewHolder();
             holder.tv_setting = (TextView) convertView.findViewById(R.id.tv_setting);
+            holder.ll_setting = (LinearLayout) convertView.findViewById(R.id.ll_setting);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.tv_setting.setText(settings[position]);
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Loger.d("position");
+                if (position == 0) {
+                    Intent floatService = new Intent(mContext, FloatService.class);
+                    mContext.startService(floatService);
+                }
+            }
+        });
         return convertView;
     }
 
     public class ViewHolder {
+        LinearLayout ll_setting;
         public TextView tv_setting;
     }
 }

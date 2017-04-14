@@ -2,15 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:background="@color/google_red">
-
-    <ImageView
-        android:id="@+id/iv_float"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/studio_icon_quanping" />
+    android:background="@color/transparent">
 
     <com.tele.forum.taptap.view.custom.AutoChangeImageView
         android:id="@+id/fl_container"
@@ -18,5 +10,15 @@
         android:layout_height="200dp">
 
     </com.tele.forum.taptap.view.custom.AutoChangeImageView>
+
+    <ImageView
+        android:id="@+id/iv_float"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/zhibo_icon_close" />
 
 </RelativeLayout>

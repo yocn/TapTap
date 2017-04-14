@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,15 +23,13 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.tele.forum.taptap.R;
-import com.tele.forum.taptap.presenter.util.Loger;
 import com.tele.forum.taptap.view.custom.AutoChangeImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FloatService extends Service {
-
-    //定义浮动窗口布局  
+    //定义浮动窗口布局
     RelativeLayout mFloatLayout;
     WindowManager.LayoutParams wmParams;
     //创建浮动窗口设置布局参数的对象  
@@ -40,13 +39,11 @@ public class FloatService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Loger.d("oncreat");
         createFloatView();
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        Loger.d("onBind");
         return null;
     }
 
@@ -54,8 +51,7 @@ public class FloatService extends Service {
         wmParams = new WindowManager.LayoutParams();
         //获取的是WindowManagerImpl.CompatModeWrapper  
         mWindowManager = (WindowManager) getApplication().getSystemService(getApplication().WINDOW_SERVICE);
-        Loger.d("mWindowManager--->" + mWindowManager);
-        //设置window type  
+        //设置window type
         wmParams.type = LayoutParams.TYPE_PHONE;
         //设置图片格式，效果为背景透明  
         wmParams.format = PixelFormat.RGBA_8888;
@@ -70,10 +66,6 @@ public class FloatService extends Service {
         //设置悬浮窗口长宽数据    
         wmParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
         wmParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        // 设置悬浮窗口长宽数据
-//        wmParams.width = 200;
-//        wmParams.height = 80;
 
         LayoutInflater inflater = LayoutInflater.from(getApplication());
         //获取浮动窗口视图所在布局  
@@ -91,24 +83,38 @@ public class FloatService extends Service {
         mAutoChangeImageView.setUrls(urls);
 
         mFloatLayout.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-        Loger.d("Width/2--->" + mFloatLayout.getMeasuredWidth() / 2);
-        Loger.d("Height/2--->" + mFloatLayout.getMeasuredHeight() / 2);
         //设置监听浮动窗口的触摸移动
-        mFloatView.setOnTouchListener(new OnTouchListener() {
+
+
+        mFloatLayout.setOnTouchListener(new OnTouchListener() {
+            int preX = 0;
+            int currentX;
+            int preY = 0;
+            int currentY;
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                //getRawX是触摸位置相对于屏幕的坐标，getX是相对于按钮的坐标
-                wmParams.x = (int) event.getRawX() - mFloatView.getMeasuredWidth() / 2;
-                Loger.d("RawX" + event.getRawX());
-                Loger.d("X" + event.getX());
-                //减25为状态栏的高度  
-                wmParams.y = (int) event.getRawY() - mFloatView.getMeasuredHeight() / 2 - 25;
-                Loger.d("RawY" + event.getRawY());
-                Loger.d("Y" + event.getY());
-                //刷新  
-                mWindowManager.updateViewLayout(mFloatLayout, wmParams);
-                return false;  //此处必须返回false，否则OnClickListener获取不到监听  
+                switch (event.getAction()) {
+                    case KeyEvent.ACTION_DOWN:
+                        if (preX == 0) {
+                            preX = (int) event.getRawX();
+                            preY = (int) event.getRawY();
+                        }
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        currentX = (int) event.getRawX();
+                        currentY = (int) event.getRawY();
+                        wmParams.x = currentX - preX;
+                        wmParams.y = currentY - preY;
+                        mWindowManager.updateViewLayout(mFloatLayout, wmParams);
+                        break;
+                    case KeyEvent.ACTION_UP:
+
+                        break;
+                    default:
+                        break;
+                }
+                return false;  //此处必须返回false，否则OnClickListener获取不到监听
             }
         });
 
@@ -116,7 +122,7 @@ public class FloatService extends Service {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(FloatService.this, "onClick", Toast.LENGTH_SHORT).show();
+                stopSelf();
             }
         });
     }

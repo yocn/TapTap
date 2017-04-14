@@ -21,7 +21,7 @@ import java.util.List;
  * com.tele.forum.taptap.view.custom.AutoChangeImageView
  * 可以装多个ImageView的FrameLayout，ImageView会自动变换
  * 使用一个framelayout，新建n个ImageView，当最顶层的ImageView动画执行完后移除掉最顶层的，新建一个ImageVIew放到最底层
- * 为达到效果，应该最少使用两张图片
+ * 为达到效果，应该最少使用两张图片,如果继续做优化，可以考虑只使用两张图片，来做到张图片的切换
  * Created by Yocn on 2017/4/13.
  */
 

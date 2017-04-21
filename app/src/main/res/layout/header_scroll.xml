@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="300dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:background="@color/colorGreen"
+        android:layout_height="250dp" />
+
+    <com.tele.forum.taptap.view.custom.scrollview.ObservableHoriScrollView
+        android:id="@+id/hsv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:background="@color/colorRed"
+        android:gravity="center_vertical"
+        android:minHeight="50dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+    </com.tele.forum.taptap.view.custom.scrollview.ObservableHoriScrollView>
+</RelativeLayout>

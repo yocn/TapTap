@@ -20,9 +20,10 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
+import com.orhanobut.logger.Logger;
 import com.tele.forum.taptap.R;
+import com.tele.forum.taptap.presenter.util.Loger;
 import com.tele.forum.taptap.view.custom.AutoChangeImageView;
 
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class FloatService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        Logger.d("onCreate");
         createFloatView();
     }
 
@@ -82,6 +84,7 @@ public class FloatService extends Service {
         urls.add("http://p3.pstatp.com/large/1a6e001d13a8b244c8a5");
         mAutoChangeImageView.setUrls(urls);
 
+        Logger.d(mAutoChangeImageView);
         mFloatLayout.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
         //设置监听浮动窗口的触摸移动
 

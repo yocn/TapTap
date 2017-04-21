@@ -11,13 +11,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:layout_marginTop="150dp"
         android:ellipsize="marquee"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:singleLine="true"
-        android:layout_marginTop="150dp"
         android:text="经验值+888888经验值+888888经验值+888888经验值+888888经验值+888888经验值+888888经验值+888888"
         android:textColor="@color/colorWhite"
         android:textSize="13sp" />
+
+    <ListView
+        android:id="@+id/lv_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.tele.forum.taptap.view.custom.scrollview.ObservableHoriScrollView
+        android:id="@+id/hsv2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hsv"
+        android:gravity="center_vertical"
+        android:minHeight="50dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_scroll2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+    </com.tele.forum.taptap.view.custom.scrollview.ObservableHoriScrollView>
 
 </RelativeLayout>

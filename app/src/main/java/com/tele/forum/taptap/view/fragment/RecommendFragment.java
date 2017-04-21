@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tele.forum.taptap.R;
-import com.tele.forum.taptap.presenter.util.Loger;
 import com.tele.forum.taptap.view.activity.MainActivity;
 import com.tele.forum.taptap.view.adapter.RecommendAdapter;
 import com.tele.forum.taptap.view.custom.swiperefreshendless.HeaderViewRecyclerAdapter;
@@ -22,6 +21,7 @@ import com.tele.forum.taptap.view.custom.swiperefreshendless.HeaderViewRecyclerA
 public class RecommendFragment extends LazyRefreshRecyclerViewFragment {
     View mView;
     Context mContext;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,8 +44,6 @@ public class RecommendFragment extends LazyRefreshRecyclerViewFragment {
         mRecyclerViewAdapter.addFooterView(loadMoreView);
         recyclerView.setAdapter(mRecyclerViewAdapter);
         recyclerView.addOnScrollListener(mScrollListener);
-//        gotoHotPage = (TextView) mRootView.findViewById(R.id.fragment_attention_gotohotpage);
-//        gotoHotPage.setOnClickListener(this);
     }
 
     @Override
@@ -62,10 +60,10 @@ public class RecommendFragment extends LazyRefreshRecyclerViewFragment {
         @Override
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
             if (dy > 0) {
-                ((MainActivity)getActivity()).dismissTopAndBottom();
+                ((MainActivity) getActivity()).dismissTopAndBottom();
             }
             if (dy < 0) {
-                ((MainActivity)getActivity()).showTopAndBottom();
+                ((MainActivity) getActivity()).showTopAndBottom();
             }
             super.onScrolled(recyclerView, dx, dy);
         }
